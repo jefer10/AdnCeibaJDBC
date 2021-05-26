@@ -1,44 +1,45 @@
-package com.ceiba.cliente.adaptador.repositorio;
+package com.ceiba.producto.adaptador.repositorio;
 
-import com.ceiba.cliente.modelo.entidad.Cliente;
-import com.ceiba.cliente.puerto.repositorio.RepositorioCliente;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
+import com.ceiba.producto.modelo.entidad.Producto;
+import com.ceiba.producto.puerto.repositorio.RepositorioProducto;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class RepositorioClienteH2 implements RepositorioCliente {
+public class RepositorioProductoH2 implements RepositorioProducto {
+
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
-    @SqlStatement(namespace="cliente", value="crear")
+    @SqlStatement(namespace="producto", value="crear")
     private static String sqlCrear;
 
-    @SqlStatement(namespace="cliente", value="actualizar")
+    @SqlStatement(namespace="producto", value="actualizar")
     private static String sqlActualizar;
 
-    @SqlStatement(namespace="cliente", value="eliminar")
+    @SqlStatement(namespace="producto", value="eliminar")
     private static String sqlEliminar;
 
-    @SqlStatement(namespace="cliente", value="existe")
+    @SqlStatement(namespace="producto", value="existe")
     private static String sqlExiste;
 
-    @SqlStatement(namespace="cliente", value="existeExcluyendoId")
+    @SqlStatement(namespace="producto", value="existeExcluyendoId")
     private static String sqlExisteExcluyendoId;
 
-    public RepositorioClienteH2(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
+    public RepositorioProductoH2(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
 
     @Override
-    public Long crear(Cliente cliente) {
-        return this.customNamedParameterJdbcTemplate.crear(cliente, sqlCrear);
+    public Long crear(Producto producto) {
+        return this.customNamedParameterJdbcTemplate.crear(producto, sqlCrear);
     }
 
     @Override
-    public void actualizar(Cliente cliente) {
-        this.customNamedParameterJdbcTemplate.actualizar(cliente, sqlActualizar);
+    public void actualizar(Producto producto) {
+        this.customNamedParameterJdbcTemplate.actualizar(producto, sqlActualizar);
     }
 
     @Override

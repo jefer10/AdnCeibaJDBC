@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/cliente")
-@Api(tags={"Controlador consulta cliente"})
+@Api(tags={"Controlador comando cliente"})
 public class ConsultaControladorCliente {
 
     private final ManejadorListarClientes manejadorListarClientes;

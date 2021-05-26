@@ -4,6 +4,9 @@ import com.ceiba.cliente.puerto.repositorio.RepositorioCliente;
 import com.ceiba.cliente.servicio.ServicioActualizarCliente;
 import com.ceiba.cliente.servicio.ServicioCrearCliente;
 import com.ceiba.cliente.servicio.ServicioEliminarCliente;
+import com.ceiba.producto.puerto.repositorio.RepositorioProducto;
+import com.ceiba.producto.servicio.ServicioActualizarProducto;
+import com.ceiba.producto.servicio.ServicioCrearProducto;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 import com.ceiba.usuario.servicio.ServicioActualizarUsuario;
 import com.ceiba.usuario.servicio.ServicioCrearUsuario;
@@ -41,6 +44,15 @@ public class BeanServicio {
     @Bean
     public ServicioActualizarCliente servicioActualizarCliente(RepositorioCliente repositorioCliente){
         return new ServicioActualizarCliente(repositorioCliente);
+    }
+    @Bean
+    public ServicioCrearProducto servicioCrearProducto(RepositorioProducto repositorioProducto){
+        return new ServicioCrearProducto(repositorioProducto);
+    }
+
+    @Bean
+    public ServicioActualizarProducto servicioActualizarProducto(RepositorioProducto repositorioProducto){
+        return new ServicioActualizarProducto(repositorioProducto);
     }
 
 }
