@@ -39,7 +39,7 @@ pipeline {
             steps{
                 dir("microservicio") {
                     echo "------------>Clean Tests<------------"
-                    sh 'gradle clean'
+                    sh 'gradlew clean'
 		     sh "./gradle compileJava"
                     echo "------------>Tests<------------"
                     sh 'gradle test'
