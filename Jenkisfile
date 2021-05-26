@@ -1,18 +1,21 @@
 pipeline {
+    //Donde se va a ejecutar el Pipeline
      agent {
             label 'Slave_Induccion'
      }
 
+     //Opciones específicas de Pipeline dentro del Pipeline
      options {
-        buildDiscarder(logRotator(numToKeepStr: '3'))
+        buildDiscarder(logRotator(numToKeepStr: '5'))
         disableConcurrentBuilds()
      }
 
+     //Una sección que define las herramientas “preinstaladas” en Jenkins
      tools {
        jdk 'JDK11_Centos'
-       gradle 'Gradle5.0_Centos'
      }
-
+    
+    //Aquí comienzan los “items” del Pipeline
      stages{
         stage('Checkout') {
             steps{
@@ -37,6 +40,7 @@ pipeline {
                 dir("microservicio") {
                     echo "------------>Clean Tests<------------"
                     sh 'gradle clean'
+		     sh "./gradle compileJava"
                     echo "------------>Tests<------------"
                     sh 'gradle test'
                 }
