@@ -2,6 +2,7 @@ package com.ceiba.cliente.controlador;
 
 import com.ceiba.ComandoRespuesta;
 import com.ceiba.cliente.comando.ComandoCliente;
+import com.ceiba.cliente.comando.manejador.ManejadorActualizarCliente;
 import com.ceiba.cliente.comando.manejador.ManejadorCrearCliente;
 import com.ceiba.cliente.comando.manejador.ManejadorEliminarCliente;
 import com.ceiba.usuario.comando.ComandoUsuario;
@@ -18,27 +19,38 @@ public class ComandoControladorCliente {
 
     private final ManejadorCrearCliente manejadorCrearCliente;
     private final ManejadorEliminarCliente manejadorEliminarCliente;
+    private final ManejadorActualizarCliente manejadorActualizarCliente;
 
     @Autowired
     public ComandoControladorCliente(ManejadorCrearCliente manejadorCrearCliente,
-                                     ManejadorEliminarCliente manejadorEliminarCliente) {
+                                     ManejadorEliminarCliente manejadorEliminarCliente,
+                                     ManejadorActualizarCliente manejadorActualizarCliente) {
         this.manejadorCrearCliente = manejadorCrearCliente;
         this.manejadorEliminarCliente = manejadorEliminarCliente;
+        this.manejadorActualizarCliente = manejadorActualizarCliente;
     }
 
 
 
 
     @PostMapping
-    @ApiOperation("Crear Usuario")
+    @ApiOperation("Crear cliente")
     public ComandoRespuesta<Long> crear(@RequestBody ComandoCliente comandoCliente) {
         return manejadorCrearCliente.ejecutar(comandoCliente);
     }
 
     @DeleteMapping(value="/{id}")
-    @ApiOperation("Eliminar Usuario")
+    @ApiOperation("Eliminar cliente")
     public void eliminar(@PathVariable Long id) {
         manejadorEliminarCliente.ejecutar(id);
+    }
+
+
+    @PutMapping(value="/{id}")
+    @ApiOperation("Actualizar cliente")
+    public void actualizar(@RequestBody ComandoCliente comandoCliente,@PathVariable Long id) {
+        comandoCliente.setId(id);
+        manejadorActualizarCliente.ejecutar(comandoCliente);
     }
 
 }
