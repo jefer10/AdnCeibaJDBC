@@ -16,4 +16,5 @@ public class MapeoCliente implements RowMapper<DtoCliente>, MapperResult {
         String direccion = rs.getString("direccion");
         return new DtoCliente(id,nombre,direccion);
     }
+
 }

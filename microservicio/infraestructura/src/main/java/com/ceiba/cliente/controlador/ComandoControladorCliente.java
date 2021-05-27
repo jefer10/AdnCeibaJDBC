@@ -37,6 +37,7 @@ public class ComandoControladorCliente {
     @ApiOperation("Crear cliente")
     public ComandoRespuesta<Long> crear(@RequestBody ComandoCliente comandoCliente) {
         return manejadorCrearCliente.ejecutar(comandoCliente);
+        //return new ComandoRespuesta<>(3L);
     }
 
     @DeleteMapping(value="/{id}")
@@ -48,7 +49,7 @@ public class ComandoControladorCliente {
 
     @PutMapping(value="/{id}")
     @ApiOperation("Actualizar cliente")
-    public void actualizar(@RequestBody ComandoCliente comandoCliente,@PathVariable Long id) {
+    public void actualizar(@RequestBody ComandoCliente comandoCliente,@PathVariable("id") Long id) {
         comandoCliente.setId(id);
         manejadorActualizarCliente.ejecutar(comandoCliente);
     }

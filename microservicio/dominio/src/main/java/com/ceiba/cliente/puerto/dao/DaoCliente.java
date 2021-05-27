@@ -12,4 +12,11 @@ public interface DaoCliente {
      * @return los usuarios
      */
     List<DtoCliente> listar();
+
+    /**
+     * permite buscar un cliente por id
+     * @param id identificador de cliente
+     * @return cliente
+     */
+    DtoCliente findById(long id);
 }

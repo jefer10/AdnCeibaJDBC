@@ -3,6 +3,8 @@ package com.ceiba.cliente.controlador;
 
 import com.ceiba.ApplicationMock;
 import com.ceiba.cliente.comando.ComandoCliente;
+import com.ceiba.cliente.modelo.dto.DtoCliente;
+import com.ceiba.cliente.puerto.dao.DaoCliente;
 import com.ceiba.cliente.servicio.testdatabuilder.ComandoClienteTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
@@ -14,6 +16,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -28,6 +33,9 @@ public class ComandoControlerClienteTest {
     private ObjectMapper objectMapper;
 
     @Autowired
+    private DaoCliente daoCliente;
+
+    @Autowired
     private MockMvc mocMvc;
 
     @Test
@@ -40,8 +48,11 @@ public class ComandoControlerClienteTest {
                 .content(objectMapper.writeValueAsString(cliente)))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{'valor': 3}"));
+
+        //DtoCliente dtoCliente= daoCliente.findById(cliente.getId());
+        //assertTrue(dtoCliente.equals(cliente));
     }
-/*
+
     @Test
     public void actualizar() throws Exception{
         // arrange
@@ -52,8 +63,11 @@ public class ComandoControlerClienteTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(comandoCliente)))
                 .andExpect(status().isOk());
+
+        //DtoCliente dtoCliente= daoCliente.findById(id);
+        //assertTrue(dtoCliente.equals(comandoCliente));
     }
-*/
+
     @Test
     public void eliminar() throws Exception {
         // arrange
@@ -63,6 +77,9 @@ public class ComandoControlerClienteTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
+
+
+       // assertNull(daoCliente.findById(id));
     }
 
 }
