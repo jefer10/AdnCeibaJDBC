@@ -3,6 +3,11 @@ pipeline {
      agent {
             label 'Slave_Induccion'
      }
+     
+     //para que apenas realize el push realize la prueba		    
+     triggers {
+        pollSCM('* * * * *')
+     }
 
      //Opciones específicas de Pipeline dentro del Pipeline
      options {
