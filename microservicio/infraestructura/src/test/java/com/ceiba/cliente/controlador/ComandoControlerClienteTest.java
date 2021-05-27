@@ -39,13 +39,13 @@ public class ComandoControlerClienteTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(cliente)))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 1}"));
+                .andExpect(content().json("{'valor': 3}"));
     }
 
     @Test
     public void actualizar() throws Exception{
         // arrange
-        Long id = 1L;
+        Long id = 2L;
         ComandoCliente comandoCliente=new ComandoClienteTestDataBuilder().build();
         // act - assert
         mocMvc.perform(put("/cliente/{id}",id)

@@ -13,7 +13,7 @@ public class ComandoClienteTestDataBuilder {
 
     public ComandoClienteTestDataBuilder() {
         //Random r = new Random();
-        this.id=123456789L;//r.nextLong();
+        this.id=4L;//r.nextLong();
         this.nombre = "JEFER";
         this.direccion = "KR90#23";
     }
