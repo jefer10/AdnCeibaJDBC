@@ -41,7 +41,7 @@ public class ComandoControlerClienteTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json("{'valor': 3}"));
     }
-
+/*
     @Test
     public void actualizar() throws Exception{
         // arrange
@@ -53,7 +53,7 @@ public class ComandoControlerClienteTest {
                 .content(objectMapper.writeValueAsString(comandoCliente)))
                 .andExpect(status().isOk());
     }
-
+*/
     @Test
     public void eliminar() throws Exception {
         // arrange
