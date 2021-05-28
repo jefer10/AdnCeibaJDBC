@@ -5,6 +5,7 @@ import com.ceiba.cliente.puerto.dao.DaoCliente;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -32,6 +33,7 @@ public class DaoClienteH2 implements DaoCliente {
     public DtoCliente findById(long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
-        return (DtoCliente) this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlBusqueda,new MapeoCliente());
+        List<DtoCliente> cliente=this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlBusqueda,paramSource,new MapeoCliente());
+        return cliente.get(0);
     }
 }

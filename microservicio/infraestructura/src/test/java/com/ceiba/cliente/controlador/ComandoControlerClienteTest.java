@@ -6,6 +6,8 @@ import com.ceiba.cliente.comando.ComandoCliente;
 import com.ceiba.cliente.modelo.dto.DtoCliente;
 import com.ceiba.cliente.puerto.dao.DaoCliente;
 import com.ceiba.cliente.servicio.testdatabuilder.ComandoClienteTestDataBuilder;
+import com.ceiba.usuario.comando.ComandoUsuario;
+import com.ceiba.usuario.servicio.testdatabuilder.ComandoUsuarioTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,10 +20,12 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
 
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.core.Is.is;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 
 @RunWith(SpringRunner.class)
@@ -41,16 +45,17 @@ public class ComandoControlerClienteTest {
     @Test
     public void crear()throws Exception{
         // arrange
-        ComandoCliente cliente = new ComandoClienteTestDataBuilder().build();
+        ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
+
         // act - assert
         mocMvc.perform(post("/cliente")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(cliente)))
+                .content(objectMapper.writeValueAsString(comandoCliente)))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{'valor': 3}"));
 
-        //DtoCliente dtoCliente= daoCliente.findById(cliente.getId());
-        //assertTrue(dtoCliente.equals(cliente));
+       // DtoCliente dtoCliente= daoCliente.findById(comandoCliente.getId());
+       // assertTrue(dtoCliente.equals(comandoCliente));
     }
 
     @Test

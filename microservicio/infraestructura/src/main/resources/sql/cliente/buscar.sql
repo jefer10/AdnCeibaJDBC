@@ -1,3 +1,1 @@
-select id,nombre,direccion
-from cliente
-where id = :id
+select id,nombre,direccion from cliente where id = :id
