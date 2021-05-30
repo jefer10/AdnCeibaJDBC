@@ -21,7 +21,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @ContextConfiguration(classes= ApplicationMock.class)
 @WebMvcTest(ConsultaControladorUsuario.class)
 public class ConsultaControladorUsuarioTest {
-/*
+
     @Autowired
     private MockMvc mocMvc;
 
@@ -37,5 +37,5 @@ public class ConsultaControladorUsuarioTest {
                 .andExpect(jsonPath("$[0].nombre", is("test")));
     }
 
-*/
+
 }
