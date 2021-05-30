@@ -60,7 +60,7 @@ public class ComandoControlerClienteTest {
        // assertTrue(dtoCliente.equals(comandoCliente));
     }
 
-
+    /*
     @Test
     public void actualizar() throws Exception{
         // arrange
@@ -76,7 +76,7 @@ public class ComandoControlerClienteTest {
         //assertTrue(dtoCliente.equals(comandoCliente));
     }
 
-
+     */
     @Test
     public void eliminar() throws Exception {
         // arrange
