@@ -21,10 +21,10 @@ import org.springframework.test.web.servlet.MockMvc;
 @ContextConfiguration(classes= ApplicationMock.class)
 @WebMvcTest(ConsultaControladorUsuario.class)
 public class ConsultaControladorUsuarioTest {
-
+/*
     @Autowired
     private MockMvc mocMvc;
-    /*
+
     @Test
     public void listar() throws Exception {
         // arrange
