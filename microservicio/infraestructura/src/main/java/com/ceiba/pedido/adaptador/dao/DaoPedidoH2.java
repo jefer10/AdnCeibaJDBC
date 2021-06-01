@@ -1,7 +1,5 @@
 package com.ceiba.pedido.adaptador.dao;
 
-import com.ceiba.cliente.adaptador.dao.MapeoCliente;
-import com.ceiba.cliente.modelo.dto.DtoCliente;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.pedido.modelo.dto.DtoPedido;

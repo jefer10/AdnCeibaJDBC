@@ -1,10 +1,10 @@
 package com.ceiba.pedido.controlador;
 
-import com.ceiba.cliente.modelo.dto.DtoCliente;
+
 import com.ceiba.pedido.consulta.ManejadorBuscarPedido;
 import com.ceiba.pedido.consulta.ManejadorListarPedido;
 import com.ceiba.pedido.modelo.dto.DtoPedido;
-import com.ceiba.usuario.modelo.dto.DtoUsuario;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

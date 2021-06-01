@@ -1,6 +1,6 @@
 package com.ceiba.producto.adaptador.dao;
 
-import com.ceiba.cliente.modelo.dto.DtoCliente;
+
 import com.ceiba.infraestructura.jdbc.MapperResult;
 import com.ceiba.producto.modelo.dto.DtoProducto;
 import org.springframework.jdbc.core.RowMapper;

@@ -14,7 +14,7 @@ public class DaoProductoH2 implements DaoProducto {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
-    @SqlStatement(namespace="cliente", value="listar")
+    @SqlStatement(namespace="producto", value="listar")
     private static String sqlListar;
 
     public DaoProductoH2(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {

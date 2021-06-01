@@ -5,8 +5,6 @@ import com.ceiba.cliente.comando.ComandoCliente;
 import com.ceiba.cliente.comando.manejador.ManejadorActualizarCliente;
 import com.ceiba.cliente.comando.manejador.ManejadorCrearCliente;
 import com.ceiba.cliente.comando.manejador.ManejadorEliminarCliente;
-import com.ceiba.usuario.comando.ComandoUsuario;
-import com.ceiba.usuario.comando.manejador.ManejadorCrearUsuario;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +35,6 @@ public class ComandoControladorCliente {
     @ApiOperation("Crear cliente")
     public ComandoRespuesta<Long> crear(@RequestBody ComandoCliente comandoCliente) {
         return manejadorCrearCliente.ejecutar(comandoCliente);
-        //return new ComandoRespuesta<>(3L);
     }
 
     @DeleteMapping(value="/{id}")

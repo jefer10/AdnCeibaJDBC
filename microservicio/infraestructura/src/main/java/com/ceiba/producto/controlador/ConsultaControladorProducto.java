@@ -1,8 +1,9 @@
 package com.ceiba.producto.controlador;
 
 import com.ceiba.Producto.consulta.ManejadorListarProductos;
-import com.ceiba.cliente.modelo.dto.DtoCliente;
+
 import com.ceiba.producto.modelo.dto.DtoProducto;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,7 @@ public class ConsultaControladorProducto {
     @GetMapping
     @ApiOperation("Listar productos")
     public List<DtoProducto> listar() {
+        System.out.println("x");
         return manejadorListarProductos.ejecutar();
     }
 }

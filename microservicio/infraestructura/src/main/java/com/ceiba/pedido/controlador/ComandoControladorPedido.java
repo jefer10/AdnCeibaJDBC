@@ -5,7 +5,6 @@ import com.ceiba.pedido.ComandoPedido;
 import com.ceiba.pedido.comando.manejador.ManejadorActualizarPedido;
 import com.ceiba.pedido.comando.manejador.ManejadorCrearPedido;
 import com.ceiba.pedido.comando.manejador.ManejadorEliminarPedido;
-import com.ceiba.usuario.comando.ComandoUsuario;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.ceiba.producto.puerto.repositorio;
 
-import com.ceiba.cliente.modelo.entidad.Cliente;
+
 import com.ceiba.producto.modelo.entidad.Producto;
 
 public interface RepositorioProducto {
