@@ -41,6 +41,7 @@ public class ComandoControladorProducto {
     @ApiOperation("Actualizar producto")
     public void actualizar(@RequestBody ComandoProducto comandoProducto,@PathVariable Long id) {
         comandoProducto.setId(id);
+        System.out.println("AAAAAAA");
         manejadorActualizarProducto.ejecutar(comandoProducto);
     }
 

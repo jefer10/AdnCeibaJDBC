@@ -31,6 +31,8 @@ public class ComandoControladorPedido {
     @PostMapping
     @ApiOperation("Crear pedido")
     public ComandoRespuesta<Long> crear(@RequestBody ComandoPedido comandoPedido) {
+        System.out.println(comandoPedido.getFecha());
+        System.out.println(comandoPedido.getValorEnvio());
         return manejadorCrearPedido.ejecutar(comandoPedido);
     }
 

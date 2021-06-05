@@ -25,10 +25,10 @@ create table producto (
 
 create table pedido (
  id int(11) not null auto_increment,
- nombre varchar(100) not null,
  clienteid int(11) not null,
  fecha datetime null,
  iva double not null,
+ valorEnvio double not null,
  total double not null,
  primary key (id),
 );
