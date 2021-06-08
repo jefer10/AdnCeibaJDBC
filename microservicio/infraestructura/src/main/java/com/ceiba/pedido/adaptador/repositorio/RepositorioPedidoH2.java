@@ -27,9 +27,11 @@ public class RepositorioPedidoH2 implements RepositorioPedido {
     @SqlStatement(namespace="pedido", value="existeExcluyendoId")
     private static String sqlExisteExcluyendoId;
 
+
     public RepositorioPedidoH2(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
+
 
     @Override
     public Long crear(Pedido pedido) {
@@ -62,4 +64,6 @@ public class RepositorioPedidoH2 implements RepositorioPedido {
         paramSource.addValue("nombre", nombre);
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId,paramSource, Boolean.class);
     }
+
+
 }

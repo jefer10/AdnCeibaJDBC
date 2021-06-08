@@ -1,12 +1,15 @@
 package com.ceiba.producto.controlador;
 
+import com.ceiba.PedidoProducto.consulta.ManejadorListarPorPedido;
 import com.ceiba.Producto.consulta.ManejadorListarProductos;
 
 import com.ceiba.producto.modelo.dto.DtoProducto;
 
+import com.ceiba.producto.modelo.dto.DtoProductoPedido;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,9 +21,12 @@ import java.util.List;
 public class ConsultaControladorProducto {
 
     private final ManejadorListarProductos manejadorListarProductos;
+    private final ManejadorListarPorPedido manejadorListarPorPedido;
 
-    public ConsultaControladorProducto(ManejadorListarProductos manejadorListarProductos) {
+    public ConsultaControladorProducto(ManejadorListarProductos manejadorListarProductos,
+                                       ManejadorListarPorPedido manejadorListarPorPedido) {
         this.manejadorListarProductos = manejadorListarProductos;
+        this.manejadorListarPorPedido=manejadorListarPorPedido;
     }
 
 
@@ -30,4 +36,12 @@ public class ConsultaControladorProducto {
         System.out.println("x");
         return manejadorListarProductos.ejecutar();
     }
+
+    @GetMapping(value="/{id}")
+    @ApiOperation("Listar productos")
+    public List<DtoProductoPedido> listarPorPedido(@PathVariable("id") long id) {
+        System.out.println("BVBV");
+        return manejadorListarPorPedido.ejecutar(id);
+    }
+
 }

@@ -4,10 +4,14 @@ import com.ceiba.cliente.puerto.repositorio.RepositorioCliente;
 import com.ceiba.cliente.servicio.ServicioActualizarCliente;
 import com.ceiba.cliente.servicio.ServicioCrearCliente;
 import com.ceiba.cliente.servicio.ServicioEliminarCliente;
+import com.ceiba.pedido.puerto.dao.DaoPedido;
 import com.ceiba.pedido.puerto.repositorio.RepositorioPedido;
 import com.ceiba.pedido.servicio.ServicioActualizarPedido;
 import com.ceiba.pedido.servicio.ServicioCrearPedido;
 import com.ceiba.pedido.servicio.ServicioEliminarPedido;
+import com.ceiba.pedidoProducto.puerto.repositorio.RepositorioPedidoProducto;
+import com.ceiba.pedidoProducto.servicio.ServicioCrearPedidoProducto;
+import com.ceiba.pedidoProducto.servicio.ServicioEliminarPedidoProducto;
 import com.ceiba.producto.puerto.repositorio.RepositorioProducto;
 import com.ceiba.producto.servicio.ServicioActualizarProducto;
 import com.ceiba.producto.servicio.ServicioCrearProducto;
@@ -68,12 +72,19 @@ public class BeanServicio {
         return new ServicioCrearPedido(repositorioPedido);
     }
     @Bean
-    public ServicioActualizarPedido servicioActualizarPedido(RepositorioPedido repositorioPedido){
-        return new ServicioActualizarPedido(repositorioPedido);
+    public ServicioActualizarPedido servicioActualizarPedido(RepositorioPedido repositorioPedido, DaoPedido daoPedido){
+        return new ServicioActualizarPedido(repositorioPedido,daoPedido);
     }
     @Bean
     public ServicioEliminarPedido servicioEliminarPedido(RepositorioPedido repositorioPedido){
         return new ServicioEliminarPedido( repositorioPedido);
     }
-
+    @Bean
+    public ServicioCrearPedidoProducto servicioCrearPedidoProducto(RepositorioPedidoProducto repositorioPedidoProducto){
+        return  new ServicioCrearPedidoProducto(repositorioPedidoProducto);
+    }
+    @Bean
+    public ServicioEliminarPedidoProducto servicioEliminarPedidoProducto(RepositorioPedidoProducto repositorioPedidoProducto){
+        return new ServicioEliminarPedidoProducto(repositorioPedidoProducto);
+    }
 }
