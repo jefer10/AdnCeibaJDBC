@@ -54,7 +54,7 @@ public class ComandoControlerClienteTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(comandoCliente)))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 3}"));
+                .andExpect(content().json("{'valor': 4}"));
 
        // DtoCliente dtoCliente= daoCliente.findById(comandoCliente.getId());
        // assertTrue(dtoCliente.equals(comandoCliente));
