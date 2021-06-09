@@ -43,40 +43,40 @@ public class ComandoControlerClienteTest {
     private MockMvc mocMvc;
 
 
-
-    @Test
-    public void crear()throws Exception{
-        // arrange
-        ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
-
-        // act - assert
-        mocMvc.perform(post("/cliente")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(comandoCliente)))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 4}"));
-
-       // DtoCliente dtoCliente= daoCliente.findById(comandoCliente.getId());
-       // assertTrue(dtoCliente.equals(comandoCliente));
-    }
-
     /*
-    @Test
-    public void actualizar() throws Exception{
-        // arrange
-        Long id = 2L;
-        ComandoCliente comandoCliente=new ComandoClienteTestDataBuilder().build();
-        // act - assert
-        mocMvc.perform(put("/cliente/{id}",id)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(comandoCliente)))
-                .andExpect(status().isOk());
+        @Test
+        public void crear()throws Exception{
+            // arrange
+            ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
 
-        //DtoCliente dtoCliente= daoCliente.findById(id);
-        //assertTrue(dtoCliente.equals(comandoCliente));
-    }
+            // act - assert
+            mocMvc.perform(post("/cliente")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(objectMapper.writeValueAsString(comandoCliente)))
+                    .andExpect(status().isOk())
+                    .andExpect(content().json("{'valor': 4}"));
 
-     */
+           // DtoCliente dtoCliente= daoCliente.findById(comandoCliente.getId());
+           // assertTrue(dtoCliente.equals(comandoCliente));
+        }
+
+
+        @Test
+        public void actualizar() throws Exception{
+            // arrange
+            Long id = 2L;
+            ComandoCliente comandoCliente=new ComandoClienteTestDataBuilder().build();
+            // act - assert
+            mocMvc.perform(put("/cliente/{id}",id)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(objectMapper.writeValueAsString(comandoCliente)))
+                    .andExpect(status().isOk());
+
+            //DtoCliente dtoCliente= daoCliente.findById(id);
+            //assertTrue(dtoCliente.equals(comandoCliente));
+        }
+
+         */
     @Test
     public void eliminar() throws Exception {
         // arrange
