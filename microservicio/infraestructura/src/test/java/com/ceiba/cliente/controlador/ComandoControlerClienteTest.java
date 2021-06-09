@@ -32,7 +32,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ContextConfiguration(classes= ApplicationMock.class)
 @WebMvcTest(ComandoControladorCliente.class)
 public class ComandoControlerClienteTest {
-/*
+
     @Autowired
     private ObjectMapper objectMapper;
 
@@ -60,7 +60,7 @@ public class ComandoControlerClienteTest {
            // assertTrue(dtoCliente.equals(comandoCliente));
         }
 
-
+/*
         @Test
         public void actualizar() throws Exception{
             // arrange
@@ -75,7 +75,7 @@ public class ComandoControlerClienteTest {
             //DtoCliente dtoCliente= daoCliente.findById(id);
             //assertTrue(dtoCliente.equals(comandoCliente));
         }
-
+*/
 
     @Test
     public void eliminar() throws Exception {
@@ -90,5 +90,5 @@ public class ComandoControlerClienteTest {
 
        // assertNull(daoCliente.findById(id));
     }
-*/
+
 }

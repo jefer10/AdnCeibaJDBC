@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ContextConfiguration(classes= ApplicationMock.class)
 @WebMvcTest(ConsultaControladorCliente.class)
 public class ConsultaControladorClienteTest {
-/*
+
     @Autowired
     private MockMvc mocMvc;
 
@@ -50,6 +50,5 @@ public class ConsultaControladorClienteTest {
                 .andExpect(jsonPath("nombre", is("jefer")));
     }
 
- */
 
 }

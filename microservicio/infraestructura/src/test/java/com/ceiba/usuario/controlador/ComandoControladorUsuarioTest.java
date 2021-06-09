@@ -25,7 +25,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @WebMvcTest(ComandoControladorUsuario.class)
 public class ComandoControladorUsuarioTest {
 
-    /*
+
     @Autowired
     private ObjectMapper objectMapper;
 
@@ -70,5 +70,5 @@ public class ComandoControladorUsuarioTest {
                 .andExpect(status().isOk());
     }
 
-     */
+
 }
