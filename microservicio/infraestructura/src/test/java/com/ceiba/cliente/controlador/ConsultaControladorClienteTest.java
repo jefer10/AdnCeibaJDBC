@@ -49,4 +49,5 @@ public class ConsultaControladorClienteTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("nombre", is("jefer")));
     }
+
 }
