@@ -1,11 +1,11 @@
-package com.ceiba.pedido.contolador;
+package com.ceiba.pedidoProducto.controlador;
 
 import com.ceiba.ApplicationMock;
-import com.ceiba.cliente.comando.ComandoCliente;
-import com.ceiba.cliente.servicio.testdatabuilder.ComandoClienteTestDataBuilder;
-import com.ceiba.pedido.ComandoPedido;
-import com.ceiba.pedido.controlador.ComandoControladorPedido;
-import com.ceiba.pedido.serviciotestdatabuilder.ComandoPedidoTestDataBuilder;
+import com.ceiba.PedidoProducto.ComandoPedidoProducto;
+import com.ceiba.pedidoProducto.contolador.ComandoControladorPedidoProducto;
+
+
+import com.ceiba.pedidoProducto.serviciotestdatabuilder.ComandoPedidoProductoTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,15 +16,15 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes= ApplicationMock.class)
-@WebMvcTest(ComandoControladorPedido.class)
-public class ComandoControlerPedidoTest {
+@WebMvcTest( ComandoControladorPedidoProducto.class)
+public class ComandoControlerPedidoProductoTest {
+
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -32,33 +32,16 @@ public class ComandoControlerPedidoTest {
     @Autowired
     private MockMvc mocMvc;
 
-
     @Test
-    public void crear()throws Exception{
+    public void crear() throws Exception{
         // arrange
-        ComandoPedido comandoPedido = new ComandoPedidoTestDataBuilder().build();
+        ComandoPedidoProducto pedidoProducto= new ComandoPedidoProductoTestDataBuilder().build();
 
         // act - assert
-        mocMvc.perform(post("/pedido")
+        mocMvc.perform(post("/pedido-producto")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(comandoPedido)))
+                .content(objectMapper.writeValueAsString(pedidoProducto)))
                 .andExpect(status().is5xxServerError());
                 //.andExpect(content().json("{'valor': 1}"));
-
-
-
-    }
-
-
-    @Test
-    public void eliminar() throws Exception {
-        // arrange
-        Long id = 1L;
-        // act - assert
-        mocMvc.perform(delete("/pedido/{id}",id)
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
-
     }
 }
