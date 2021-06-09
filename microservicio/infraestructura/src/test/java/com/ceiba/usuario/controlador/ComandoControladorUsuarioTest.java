@@ -31,7 +31,7 @@ public class ComandoControladorUsuarioTest {
 
     @Autowired
     private MockMvc mocMvc;
-/*
+
     @Test
     public void crear() throws Exception{
         // arrange
@@ -44,7 +44,7 @@ public class ComandoControladorUsuarioTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json("{'valor': 2}"));
     }
-
+/*
     @Test
     public void actualizar() throws Exception{
         // arrange
@@ -57,6 +57,7 @@ public class ComandoControladorUsuarioTest {
                 .content(objectMapper.writeValueAsString(usuario)))
                 .andExpect(status().isOk());
     }
+    */
 
     @Test
     public void eliminar() throws Exception {
@@ -71,6 +72,5 @@ public class ComandoControladorUsuarioTest {
     }
 
 
- */
 
 }
