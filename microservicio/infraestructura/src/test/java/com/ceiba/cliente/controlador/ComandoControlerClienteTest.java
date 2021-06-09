@@ -32,7 +32,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ContextConfiguration(classes= ApplicationMock.class)
 @WebMvcTest(ComandoControladorCliente.class)
 public class ComandoControlerClienteTest {
-
+/*
     @Autowired
     private ObjectMapper objectMapper;
 
@@ -43,7 +43,7 @@ public class ComandoControlerClienteTest {
     private MockMvc mocMvc;
 
 
-    /*
+
         @Test
         public void crear()throws Exception{
             // arrange

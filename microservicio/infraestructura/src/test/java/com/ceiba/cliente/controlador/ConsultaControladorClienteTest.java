@@ -23,10 +23,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ContextConfiguration(classes= ApplicationMock.class)
 @WebMvcTest(ConsultaControladorCliente.class)
 public class ConsultaControladorClienteTest {
-
+/*
     @Autowired
     private MockMvc mocMvc;
-/*
+
     @Test
     public void listar() throws Exception {
         // arrange
