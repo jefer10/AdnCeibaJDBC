@@ -35,8 +35,8 @@ public class ConsultaControladorClienteTest {
         mocMvc.perform(get("/cliente")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(3)))
-                .andExpect(jsonPath("$[0].nombre", is("jefer")));
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(jsonPath("$[0].nombre", is("XXX")));
     }
 /*
     @Test
