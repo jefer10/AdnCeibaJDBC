@@ -19,6 +19,7 @@ public class ServicioCrearPedido {
 
     public Long ejecutar(Pedido pedido){///
         validarExistenciaPrevia(pedido);
+        validarFinDeSemana(pedido);
         return this.repositorioPedido.crear(pedido);
     }
 
@@ -29,7 +30,7 @@ public class ServicioCrearPedido {
         }
     }
 
-    private void ValidarFinDeSemana(Pedido pedido){
+    private void validarFinDeSemana(Pedido pedido){
         if ((pedido.getFecha().getDayOfWeek()== DayOfWeek.SUNDAY)
                 && (pedido.getFecha().getDayOfWeek()==DayOfWeek.SATURDAY)){
             throw new ExcepcionDuplicidad(NO_SE_PUEDE_PEDIR_PEDIDO_LOS_FINES_DE_SEMANA);

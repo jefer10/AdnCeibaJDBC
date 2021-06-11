@@ -35,7 +35,7 @@ public class Pedido {
         validarObligatorio(total,SE_DEBE_INGRESAR_EL_TOTAL);
         validarPositivo(iva,EL_VALOR_DEL_IVA_DEBE_SER_POSITIVO);
         validarPositivo(total, EL_VALOR_DEL_TOTAL_DEBE_SER_POSITIVO );
-        //validarPositivo(valorEnvio, EL_VALOR_DEL_ENVIO_DEBE_SER_POSITIVO );
+
 
         this.id = id;
         this.fecha = fecha;

@@ -25,7 +25,7 @@ public class ServicioActualizarPedido {
 
     public void ejecutar(Pedido pedido){///
         validarExistenciaPrevia(pedido);
-        ValidarFecha(pedido);
+        validarFecha(pedido);
         this.repositorioPedido.actualizar(pedido);
     }
 
@@ -36,7 +36,7 @@ public class ServicioActualizarPedido {
         }
     }
 
-    private void ValidarFecha(Pedido pedido){
+    private void validarFecha(Pedido pedido){
         DtoPedido pedidoOld=this.daoPedido.findById(pedido.getId());
         LocalDateTime horaDeCreacion=pedidoOld.getFecha();
         if(!LocalDateTime.now().isBefore(horaDeCreacion.plusHours(12))){
