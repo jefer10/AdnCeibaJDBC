@@ -16,8 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -42,7 +41,7 @@ public class ComandoControlerPedidoTest {
         mocMvc.perform(post("/pedido")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(comandoPedido)))
-                .andExpect(status().is5xxServerError());
+                .andExpect(status().isOk());
                 //.andExpect(content().json("{'valor': 1}"));
 
 
@@ -61,4 +60,20 @@ public class ComandoControlerPedidoTest {
                 .andExpect(status().isOk());
 
     }
+
+
+    @Test
+    public void Actualizar() throws Exception{
+        // arrange
+        Long id= 1L;
+        ComandoPedido comandoPedido=new ComandoPedidoTestDataBuilder().build();
+        // act - assert
+        mocMvc.perform(put("/pedido/{id}",id)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(comandoPedido)))
+                .andExpect(status().is4xxClientError());
+
+    }
+
+
 }
