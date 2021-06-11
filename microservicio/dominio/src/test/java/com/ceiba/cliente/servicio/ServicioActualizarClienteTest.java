@@ -14,7 +14,7 @@ import org.mockito.Mockito;
 public class ServicioActualizarClienteTest {
 
     private static final String EL_CLIENTE_YA_EXISTE_EN_EL_SISTEMA = "El usuario ya existe en el sistema";
-/*
+
     @Test
     public void validarClienteExistenciaPreviaTest() {
         // arrange
@@ -26,5 +26,5 @@ public class ServicioActualizarClienteTest {
         BasePrueba.assertThrows(() -> servicioActualizarCliente.ejecutar(cliente), ExcepcionDuplicidad.class,EL_CLIENTE_YA_EXISTE_EN_EL_SISTEMA);
     }
 
- */
+
 }

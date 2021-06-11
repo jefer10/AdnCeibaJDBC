@@ -11,7 +11,7 @@ import com.ceiba.BasePrueba;
 
 public class ServicioActualizarUsuarioTest {
 
-    /*
+
     @Test
     public void validarUsuarioExistenciaPreviaTest() {
         // arrange
@@ -23,5 +23,5 @@ public class ServicioActualizarUsuarioTest {
         BasePrueba.assertThrows(() -> servicioActualizarUsuario.ejecutar(usuario), ExcepcionDuplicidad.class,"El usuario ya existe en el sistema");
     }
 
-     */
+
 }

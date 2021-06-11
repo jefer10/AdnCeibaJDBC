@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*;
 
 
 public class ServicioCrearClienteTest {
-/*
+
     private static final String SE_DEBE_INGRESAR_EL_NOMBRE = "Se debe ingresar el  nombre";
     private static final String SE_DEBE_INGRESAR_LA_DIRECCION = "Se debe ingresar la direccion";
 
@@ -64,5 +64,5 @@ public class ServicioCrearClienteTest {
         servicioCrearCliente.ejecutar(cliente);
         verify(repositorioCliente, times(1)).crear(cliente);//verifica que se llame la dependencia repositorioCliente y llame al metodo crear
     }
-*/
+
 }

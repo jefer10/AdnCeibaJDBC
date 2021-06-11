@@ -11,7 +11,7 @@ import org.mockito.Mockito;
 import com.ceiba.BasePrueba;
 
 public class ServicioCrearUsuarioTest {
-/*
+
     @Test
     public void validarClaveLongitudMenor4Test() {
         // arrange
@@ -32,5 +32,5 @@ public class ServicioCrearUsuarioTest {
     }
 
 
- */
+
 }

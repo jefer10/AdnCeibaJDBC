@@ -1,8 +1,7 @@
 package com.ceiba.pedido.contolador;
 
 import com.ceiba.ApplicationMock;
-import com.ceiba.cliente.comando.ComandoCliente;
-import com.ceiba.cliente.servicio.testdatabuilder.ComandoClienteTestDataBuilder;
+
 import com.ceiba.pedido.ComandoPedido;
 import com.ceiba.pedido.controlador.ComandoControladorPedido;
 import com.ceiba.pedido.serviciotestdatabuilder.ComandoPedidoTestDataBuilder;
