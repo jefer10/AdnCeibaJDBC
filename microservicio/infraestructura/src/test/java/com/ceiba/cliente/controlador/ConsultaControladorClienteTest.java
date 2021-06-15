@@ -41,9 +41,6 @@ public class ConsultaControladorClienteTest {
 
 
 
-
-
-/*
     @Test
     public void buscar() throws Exception {
         // arrange
@@ -54,6 +51,6 @@ public class ConsultaControladorClienteTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("nombre", is("jefer")));
     }
-*/
+
 
 }
