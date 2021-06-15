@@ -1,6 +1,7 @@
 package com.ceiba.pedido.servicio;
 
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.pedido.modelo.dto.DtoPedido;
 import com.ceiba.pedido.modelo.entidad.Pedido;
 import com.ceiba.pedido.puerto.dao.DaoPedido;
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 
 public class ServicioActualizarPedido {
 
-    private static final String EL_USUARIO_NO_EXISTE = "El usuario no existe en el sistema";
+    private static final String EL_USUARIO_NO_EXISTE = "El pedido no existe en el sistema";
     private static final String EL_PEDIDO_YA_SUPERO_EL_TIEMPO = "El pedido ya supero el tiempo";
 
     private final RepositorioPedido repositorioPedido;
@@ -40,7 +41,7 @@ public class ServicioActualizarPedido {
         DtoPedido pedidoOld=this.daoPedido.findById(pedido.getId());
         LocalDateTime horaDeCreacion=pedidoOld.getFecha();
         if(!LocalDateTime.now().isBefore(horaDeCreacion.plusHours(12))){
-            throw new ExcepcionDuplicidad(EL_USUARIO_NO_EXISTE);
+            throw new ExcepcionValorInvalido(EL_PEDIDO_YA_SUPERO_EL_TIEMPO);
         }
     }
 }
