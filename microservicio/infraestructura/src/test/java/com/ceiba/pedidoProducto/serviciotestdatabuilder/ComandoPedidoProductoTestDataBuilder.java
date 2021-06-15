@@ -14,6 +14,11 @@ public class ComandoPedidoProductoTestDataBuilder {
         this.productoid = 1L;
     }
 
+    public ComandoPedidoProductoTestDataBuilder conId(Long id) {
+        this.id = id;
+        return this;
+    }
+
     public ComandoPedidoProductoTestDataBuilder conPedidoid(Long pedidoid) {
         this.pedidoid = pedidoid;
         return this;

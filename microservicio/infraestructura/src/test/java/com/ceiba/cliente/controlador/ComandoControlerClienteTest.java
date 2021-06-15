@@ -46,12 +46,12 @@ public class ComandoControlerClienteTest {
         @Test
         public void crear()throws Exception{
             // arrange
-            ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().build();
+            ComandoCliente comandoCliente = new ComandoClienteTestDataBuilder().conId(6L).conNombre("rrr").build();
             // act - assert
             mocMvc.perform(post("/cliente")
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(objectMapper.writeValueAsString(comandoCliente)))
-                    .andExpect(status().is4xxClientError());
+                    .andExpect(status().isOk());
                     //.andExpect(content().json("{'valor': 4}"));
 
            // DtoCliente dtoCliente= daoCliente.findById(comandoCliente.getId());
@@ -78,7 +78,7 @@ public class ComandoControlerClienteTest {
     @Test
     public void eliminar() throws Exception {
         // arrange
-        Long id = 1L;
+        Long id = 2L;
         // act - assert
         mocMvc.perform(delete("/cliente/{id}",id)
                 .contentType(MediaType.APPLICATION_JSON)

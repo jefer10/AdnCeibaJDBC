@@ -43,7 +43,7 @@ public class ComandoControladorProductoTestl {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(comandoProducto)))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 3}"));
+                .andExpect(content().json("{'valor': 4}"));
 
     }
 

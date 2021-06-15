@@ -40,18 +40,32 @@ public class ComandoControlerPedidoTest {
         mocMvc.perform(post("/pedido")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(comandoPedido)))
-                .andExpect(status().is5xxServerError());
+                .andExpect(status().isOk());
                 //.andExpect(content().json("{'valor': 1}"));
 
 
 
     }
 
+    @Test
+    public void Actualizar() throws Exception{
+        // arrange
+        ComandoPedido comandoPedido=new ComandoPedidoTestDataBuilder().conId(1L).build();
+        Long id= comandoPedido.getId();
+        System.out.println(comandoPedido.getId());
+
+        // act - assert
+        mocMvc.perform(put("/pedido/{id}",id)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(comandoPedido)))
+                .andExpect(status().isOk());
+
+    }
 
     @Test
     public void eliminar() throws Exception {
         // arrange
-        Long id = 1L;
+        Long id = 2L;
         // act - assert
         mocMvc.perform(delete("/pedido/{id}",id)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -61,18 +75,7 @@ public class ComandoControlerPedidoTest {
     }
 
 
-    @Test
-    public void Actualizar() throws Exception{
-        // arrange
-        Long id= 1L;
-        ComandoPedido comandoPedido=new ComandoPedidoTestDataBuilder().build();
-        // act - assert
-        mocMvc.perform(put("/pedido/{id}",id)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(comandoPedido)))
-                .andExpect(status().is4xxClientError());
 
-    }
 
 
 }

@@ -41,7 +41,7 @@ public class ComandoControlerPedidoProductoTest {
         mocMvc.perform(post("/pedido-producto")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(pedidoProducto)))
-                .andExpect(status().is5xxServerError());
-                //.andExpect(content().json("{'valor': 1}"));
+                .andExpect(status().isOk())
+                .andExpect(content().json("{'valor': 1}"));
     }
 }

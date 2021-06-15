@@ -18,6 +18,11 @@ public class ComandoClienteTestDataBuilder {
         this.direccion = "KR90#23";
     }
 
+    public ComandoClienteTestDataBuilder conId(Long id) {
+        this.id = id;
+        return this;
+    }
+
     public ComandoClienteTestDataBuilder conNombre(String nombre){
         this.nombre=nombre;
         return this;

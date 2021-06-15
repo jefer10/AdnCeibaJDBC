@@ -12,6 +12,8 @@ public class ServicioCrearPedidoProducto {
     }
 
     public Long ejecutar(PedidoProducto pedidoProducto){
+        System.out.println(pedidoProducto.getProductoid()+":producto");
+        System.out.println(pedidoProducto.getPedidoid()+":pedido");
         return  this.repositorioPedidoProducto.agrupar(pedidoProducto);
     }
 }

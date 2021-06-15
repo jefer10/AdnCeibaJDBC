@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 public class ServicioActualizarPedido {
 
-    private static final String EL_USUARIO_NO_EXISTE = "El pedido no existe en el sistema";
+    private static final String EL_PEDIDO_NO_EXISTE = "El pedido no existe en el sistema";
     private static final String EL_PEDIDO_YA_SUPERO_EL_TIEMPO = "El pedido ya supero el tiempo";
 
     private final RepositorioPedido repositorioPedido;
@@ -27,13 +27,15 @@ public class ServicioActualizarPedido {
     public void ejecutar(Pedido pedido){///
         validarExistenciaPrevia(pedido);
         validarFecha(pedido);
+        System.out.println("id:"+pedido.getId());
         this.repositorioPedido.actualizar(pedido);
     }
 
     private void validarExistenciaPrevia(Pedido pedido) {
         boolean existe = this.repositorioPedido.existe(pedido.getId());
+        System.out.println(existe);
         if(!existe) {
-            throw new ExcepcionDuplicidad(EL_USUARIO_NO_EXISTE);
+            throw new ExcepcionDuplicidad(EL_PEDIDO_NO_EXISTE);
         }
     }
 

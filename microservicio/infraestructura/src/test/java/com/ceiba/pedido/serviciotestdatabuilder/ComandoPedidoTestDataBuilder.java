@@ -14,12 +14,17 @@ public class ComandoPedidoTestDataBuilder {
     private Double total;
 
     public ComandoPedidoTestDataBuilder() {
-        this.id = 1L;
+        this.id = 2L;
         this.fecha = LocalDateTime.now();
         this.clienteId = 1L;
         this.iva = 54000.0;
         this.valorEnvio = 0.0;
         this.total = 324000.0;
+    }
+
+    public ComandoPedidoTestDataBuilder conId(Long id) {
+        this.id = id;
+        return this;
     }
 
     public ComandoPedidoTestDataBuilder conClienteId(Long clienteId) {
