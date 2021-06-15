@@ -10,6 +10,9 @@ import org.mockito.Mockito;
 
 import java.time.LocalDateTime;
 
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
 public class ServicioCrearPedidoTest {
 
     @Test
@@ -33,5 +36,17 @@ public class ServicioCrearPedidoTest {
         //act-assert
         BasePrueba.assertThrows(()->servicioCrearPedido.ejecutar(pedidoTestDataBuilder.build()), RuntimeException.class, "El pedido no puede ser creado los fines de semana");
 
+    }
+
+    @Test
+    public void validarCrearPedido(){
+        //arrange
+        Pedido pedido=new PedidoTestDataBuilder().build();
+        RepositorioPedido repositorioPedido= Mockito.mock(RepositorioPedido.class);
+        Mockito.when(repositorioPedido.crear(pedido)).thenReturn(1L);
+        ServicioCrearPedido servicioCrearPedido=new ServicioCrearPedido(repositorioPedido);
+        //act-assert
+        servicioCrearPedido.ejecutar(pedido);
+        verify(repositorioPedido,times(1)).crear(pedido);
     }
 }

@@ -2,6 +2,7 @@ package com.ceiba.pedido.servicio;
 
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.pedido.modelo.dto.DtoPedido;
 import com.ceiba.pedido.modelo.entidad.Pedido;
 import com.ceiba.pedido.puerto.dao.DaoPedido;
@@ -11,6 +12,9 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.time.LocalDateTime;
+
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.*;
 
 public class ServicioActualizarPedidoTest {
 
@@ -28,18 +32,35 @@ public class ServicioActualizarPedidoTest {
     }
 
     @Test
-    public void horaDeActualizacio(){
+    public void actualizarPedido(){
         //arrangue
-        LocalDateTime fecha =
-                LocalDateTime.of(2021, 06, 14, 0, 0, 0, 0);
-        DtoPedido dtoPedido=new PedidoTestDataBuilder().conFecha(fecha).dtoBuild();
-        Pedido pedido=new PedidoTestDataBuilder().conFecha(fecha.plusHours(13)).build();
+        Pedido pedido=new PedidoTestDataBuilder().conId(1L).build();
+        DtoPedido dtoPedido=new PedidoTestDataBuilder().conFecha(LocalDateTime.now()).dtoBuild();
         DaoPedido daoPedido=Mockito.mock(DaoPedido.class);
-        RepositorioPedido repositorioPedido= Mockito.mock(RepositorioPedido.class);
-        Mockito.when(daoPedido.findById(Mockito.anyLong())).thenReturn(dtoPedido);
+        RepositorioPedido repositorioPedido=Mockito.mock(RepositorioPedido.class);
+        Mockito.when(daoPedido.findById(anyLong())).thenReturn(dtoPedido);
+        doNothing().when(repositorioPedido).actualizar(any(Pedido.class));
+        Mockito.when(repositorioPedido.existe(anyLong())).thenReturn(true);
         ServicioActualizarPedido servicioActualizarPedido=new ServicioActualizarPedido(repositorioPedido,daoPedido);
         //act-assert
-       // BasePrueba.assertThrows(()->servicioActualizarPedido.ejecutar(pedido), RuntimeException.class, "El pedido ya supero el tiempo");
+        servicioActualizarPedido.ejecutar(pedido);
+        verify(repositorioPedido,times(1)).actualizar(any(Pedido.class));
+
+    }
+
+
+    @Test
+    public void horaDeActualizacio(){
+        Pedido pedido=new PedidoTestDataBuilder().conId(1L).build();
+        DtoPedido dtoPedido=new PedidoTestDataBuilder().dtoBuild();
+        DaoPedido daoPedido=Mockito.mock(DaoPedido.class);
+        RepositorioPedido repositorioPedido=Mockito.mock(RepositorioPedido.class);
+        Mockito.when(daoPedido.findById(anyLong())).thenReturn(dtoPedido);
+        doNothing().when(repositorioPedido).actualizar(any(Pedido.class));
+        Mockito.when(repositorioPedido.existe(anyLong())).thenReturn(true);
+        ServicioActualizarPedido servicioActualizarPedido=new ServicioActualizarPedido(repositorioPedido,daoPedido);
+        //act-assert
+        BasePrueba.assertThrows(()->servicioActualizarPedido.ejecutar(pedido), ExcepcionValorInvalido.class, "El pedido ya supero el tiempo");
     }
 
 

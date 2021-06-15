@@ -8,6 +8,9 @@ import com.ceiba.producto.servicio.testdatabuilder.ProductoTestDataBuilder;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.*;
+
 public class ServicioActualizarProductoTest {
 
     @Test
@@ -19,5 +22,17 @@ public class ServicioActualizarProductoTest {
         ServicioActualizarProducto servicioActualizarProducto= new ServicioActualizarProducto(repositorioProducto);
         //act-assert
         BasePrueba.assertThrows(()->servicioActualizarProducto.ejecutar(producto), ExcepcionDuplicidad.class,"El producto ya existe en el sistema");
+    }
+
+    @Test
+    public void validarActualizacion(){
+        //arrangue
+        Producto producto=new ProductoTestDataBuilder().build();
+        RepositorioProducto repositorioProducto=Mockito.mock(RepositorioProducto.class);
+        doNothing().when(repositorioProducto).actualizar(any(Producto.class));
+        ServicioActualizarProducto servicioActualizarProducto=new ServicioActualizarProducto(repositorioProducto);
+        //act-assert
+        servicioActualizarProducto.ejecutar(producto);
+        verify(repositorioProducto,times(1)).actualizar(any(Producto.class));
     }
 }

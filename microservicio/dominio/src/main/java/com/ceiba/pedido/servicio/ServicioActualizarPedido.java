@@ -33,7 +33,7 @@ public class ServicioActualizarPedido {
 
     private void validarExistenciaPrevia(Pedido pedido) {
         boolean existe = this.repositorioPedido.existe(pedido.getId());
-        System.out.println(existe);
+        System.out.println("bolean:"+existe);
         if(!existe) {
             throw new ExcepcionDuplicidad(EL_PEDIDO_NO_EXISTE);
         }
