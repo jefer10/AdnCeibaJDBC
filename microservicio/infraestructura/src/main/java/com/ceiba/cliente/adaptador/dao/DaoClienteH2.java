@@ -33,6 +33,14 @@ public class DaoClienteH2 implements DaoCliente {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
         List<DtoCliente> cliente=this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlBusqueda,paramSource,new MapeoCliente());
-        return cliente.get(0);
+        System.out.println("find_cliente");
+        System.out.println(cliente.size());
+        //System.out.println("id: "+cliente.get(0).getId()+"nombre: "+cliente.get(0).getNombre()+"direccion: "+cliente.get(0).getDireccion());
+        if (cliente.size()>0){
+            return cliente.get(0);
+        }else {
+            return null;
+        }
     }
+
 }

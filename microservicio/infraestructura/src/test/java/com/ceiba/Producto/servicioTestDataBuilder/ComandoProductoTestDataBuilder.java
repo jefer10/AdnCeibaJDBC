@@ -16,6 +16,10 @@ public class ComandoProductoTestDataBuilder {
         this.precio = 25000.0;
     }
 
+    public ComandoProductoTestDataBuilder conId(long id){
+        this.id=id;
+        return this;
+    }
     public ComandoProductoTestDataBuilder  conNombre(String nombre) {
         this.nombre = nombre;
         return this;
@@ -34,4 +38,5 @@ public class ComandoProductoTestDataBuilder {
     public ComandoProducto buil(){
         return new ComandoProducto(id,nombre,descripcion,precio);
     }
+
 }

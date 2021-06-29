@@ -18,10 +18,10 @@ public class ServicioActualizarProductoTest {
         //arrangue
         Producto producto=new ProductoTestDataBuilder().conId(1L).build();
         RepositorioProducto repositorioProducto= Mockito.mock(RepositorioProducto.class);
-        Mockito.when(repositorioProducto.existeExcluyendoId(Mockito.anyLong(),Mockito.anyString())).thenReturn(true);
+        Mockito.when(repositorioProducto.existeExcluyendoId(Mockito.anyLong(),Mockito.anyString())).thenReturn(false);
         ServicioActualizarProducto servicioActualizarProducto= new ServicioActualizarProducto(repositorioProducto);
         //act-assert
-        BasePrueba.assertThrows(()->servicioActualizarProducto.ejecutar(producto), ExcepcionDuplicidad.class,"El producto ya existe en el sistema");
+        BasePrueba.assertThrows(()->servicioActualizarProducto.ejecutar(producto), ExcepcionDuplicidad.class,"El producto no existe en el sistema");
     }
 
     @Test
@@ -29,6 +29,7 @@ public class ServicioActualizarProductoTest {
         //arrangue
         Producto producto=new ProductoTestDataBuilder().build();
         RepositorioProducto repositorioProducto=Mockito.mock(RepositorioProducto.class);
+        Mockito.when(repositorioProducto.existeExcluyendoId(Mockito.anyLong(),Mockito.anyString())).thenReturn(true);
         doNothing().when(repositorioProducto).actualizar(any(Producto.class));
         ServicioActualizarProducto servicioActualizarProducto=new ServicioActualizarProducto(repositorioProducto);
         //act-assert

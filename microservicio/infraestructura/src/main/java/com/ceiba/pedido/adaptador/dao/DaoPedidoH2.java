@@ -35,6 +35,10 @@ public class DaoPedidoH2 implements DaoPedido {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
         List<DtoPedido> pedido=this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlBusqueda,paramSource,new MapeoPedido());
-        return pedido.get(0);
+        if (pedido.size()>0){
+            return pedido.get(0);
+        }else {
+            return null;
+        }
     }
 }

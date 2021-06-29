@@ -6,8 +6,6 @@ import com.ceiba.cliente.comando.ComandoCliente;
 import com.ceiba.cliente.modelo.dto.DtoCliente;
 import com.ceiba.cliente.puerto.dao.DaoCliente;
 import com.ceiba.cliente.servicio.testdatabuilder.ComandoClienteTestDataBuilder;
-import com.ceiba.usuario.comando.ComandoUsuario;
-import com.ceiba.usuario.servicio.testdatabuilder.ComandoUsuarioTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +20,7 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -51,11 +50,12 @@ public class ComandoControlerClienteTest {
             mocMvc.perform(post("/cliente")
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(objectMapper.writeValueAsString(comandoCliente)))
-                    .andExpect(status().isOk());
-                    //.andExpect(content().json("{'valor': 4}"));
+                    .andExpect(status().isOk())
+                    .andExpect(content().json("{'valor': 4}"));
 
-           // DtoCliente dtoCliente= daoCliente.findById(comandoCliente.getId());
-           // assertTrue(dtoCliente.equals(comandoCliente));
+           DtoCliente dtoCliente= daoCliente.findById(4);
+           assertEquals(comandoCliente.getDireccion(),dtoCliente.getDireccion());
+           assertEquals(comandoCliente.getNombre(),dtoCliente.getNombre());
         }
 
 
@@ -70,8 +70,9 @@ public class ComandoControlerClienteTest {
                     .content(objectMapper.writeValueAsString(comandoCliente)))
                     .andExpect(status().isOk());
 
-            //DtoCliente dtoCliente= daoCliente.findById(id);
-            //assertTrue(dtoCliente.equals(comandoCliente));
+            DtoCliente dtoCliente= daoCliente.findById(id);
+            assertEquals(comandoCliente.getDireccion(),dtoCliente.getDireccion());
+            assertEquals(comandoCliente.getNombre(),dtoCliente.getNombre());
         }
 
 
@@ -85,8 +86,7 @@ public class ComandoControlerClienteTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
 
-
-       // assertNull(daoCliente.findById(id));
+        assertNull(daoCliente.findById(id));
     }
 
 }

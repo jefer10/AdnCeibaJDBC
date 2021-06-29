@@ -37,13 +37,13 @@ public class ComandoControladorPedido {
     }
 
     @DeleteMapping(value="/{id}")
-    @ApiOperation("Eliminar Usuario")
+    @ApiOperation("Eliminar pedido")
     public void eliminar(@PathVariable Long id) {
         manejadorEliminarPedido.ejecutar(id);
     }
 
     @PutMapping(value="/{id}")
-    @ApiOperation("Actualizar Usuario")
+    @ApiOperation("Actualizar pedido")
     public void actualizar(@RequestBody ComandoPedido comandoPedido,@PathVariable Long id) {
         comandoPedido.setId(id);
         manejadorActualizarPedido.ejecutar(comandoPedido);

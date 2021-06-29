@@ -17,4 +17,11 @@ public interface DaoProducto {
      * @return los productos del pedido
      */
     List<DtoProductoPedido>listarPorPedido(Long id);
+
+    /**
+     * permite buscar producto por id
+     * @param id del producto
+     * @return el producto
+     */
+    DtoProducto findById(long id);
 }
